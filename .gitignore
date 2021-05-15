@@ -2,3 +2,7 @@
 node_modules/
 ans.json
 notes_shakar.txt
+.cache/node-gyp/10.23.0
+.bash_history
+.glitch-assets
+.glitchdotcom.json
