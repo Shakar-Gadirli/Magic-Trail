@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <style>
+            .labels{
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="/"></a>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul style="padding: 50px;" class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <!-- <li style="float: left;"><img src="images/logo1.png" width="100px" height="35px"></li> -->
+                        <li style="float: left;"><img src="/images/logo1.png" width="100px" height="35px"></li>
+                        <!--<li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/signin">Sign-in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/register" tabindex="-1" aria-disabled="true">Sign-up</a>
+                        </li>
+
+                        <li style="float:left" class="nav-item">
+                            <a class="nav-link" href="/admin" tabindex="-1" aria-disabled="true">Page Management</a>
+                        </li>
+                        <li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-secondary log-out-btn">Log Out</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--container-->
+        </nav>
+        <div class="container">
+            <div class="row" >
+                <div class="col-6 offset-3 login-container" style="background-image: url('https://i.pinimg.com/564x/ea/b2/64/eab2643e79e2c7aa5067625d9d2365b0.jpg'); background-size: 100%;">
+                    <form method="POST" action="" >
+                        <div class="split left">
+                            <div class= "centered"> 
+                            <p style="font-size: 30px; font-family: 'Playfair Display'">Passenger details</p>
+                                <label class="labels">Birthdate</label>
+                                <input type="date" name="birthday" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <label class="labels">Card number</label>
+                                <input type="text" name="cardno" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <label class="labels">Category</label>
+                                <select name="category" style="font-size: x-large; display: block;" required>
+                                    <option value="adult">Adult</option>
+                                    <option value="child">Child</option>
+                                </select>
+                                <br>
+                                <label class="labels">Email</label>
+                                <input type="email" name="email" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <label class="labels">Expiration</label>
+                                <input type="date" name="expiration" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <label class="labels">Name</label>
+                                <input type="text" name="name" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <label class="labels">Nationality</label>
+                                <input type="text" name="nationality" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <label class="labels">Phone</label>
+                                <input type="text" name="phone" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <label class="labels">Surname</label>
+                                <input type="text" name="surname" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <label class="labels">Title</label>
+                                <select name="title" style="font-size: x-large; display: block;" required>
+                                    <option value="mr">Mr.</option>
+                                    <option value="ms">Ms.</option>
+                                </select>
+                                <br>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-6 offset-3 login-container" style="background-image: url('https://i.pinimg.com/564x/ea/b2/64/eab2643e79e2c7aa5067625d9d2365b0.jpg');">
+                    <form method="POST" action="">
+                        <div class="split right">
+                            <div class="centered"> 
+                                <p style="font-size: 30px; font-family: 'Playfair Display';">Billing details</p>
+                                <label class="labels">Address</label>
+                                <input type="text" placeholder="Address" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <label class="labels">City</label>
+                                <input type="text" placeholder="City" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <label class="labels">Zip code</label>
+                                <input type="text" placeholder="Zip code" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <label class="labels">Country</label>
+                                <input type="text" placeholder="Country" style="font-size: x-large; display: block;" required>
+                                <br>
+                                <input type="submit" value="SUBMIT">
+                                <br>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- <% if (result.length == 0) { %>
+            <div>
+                <p>Your request is sent, We will contact you for further payment processes.</p>
+            </div>
+        <% } %>  -->
+        <div style="text-align: center;" >
+            <a href="/">Go Back</a>
+        </div>
+    </body>
+</html>

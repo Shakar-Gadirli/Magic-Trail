@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <style>
+            body {
+    background-color: #e6ebf4;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 5px 6px 6px 2px #e9ecef
+}
+
+.heading {
+    font-size: 23px;
+    font-weight: 00
+}
+
+.text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #b1b6bd
+}
+
+.pricing {
+    border: 2px solid #304FFE;
+    background-color: #f2f5ff
+}
+
+.business {
+    font-size: 20px;
+    font-weight: 500
+}
+
+.plan {
+    color: #aba4a4
+}
+
+.dollar {
+    font-size: 16px;
+    color: #6b6b6f
+}
+
+.amount {
+    font-size: 50px;
+    font-weight: 500
+}
+
+
+
+.detail {
+    font-size: 22px;
+    font-weight: 500
+}
+
+.cvv {
+    height: 30px;
+    width: 73px;
+    /* border: 2px solid #eee */
+    border-radius: 4px;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    margin-left: 65px;
+    margin-top: 10px;
+
+
+}
+
+.cvv:focus {
+    box-shadow: none;
+    border: 2px solid #304FFE
+}
+
+.email-text {
+    height: 30px;
+    border: 2px solid #eee
+}
+.email{
+    margin-left: 100px;
+    margin-top: 10px;
+}
+.email-text:focus {
+    box-shadow: none;
+    border: 2px solid #304FFE
+}
+
+.payment-button {
+    height: 40px;
+    font-size: 20px;
+    margin-top: 20px;
+    background-color: #304FFE;
+    color: white;
+}
+.exp{
+    margin-left: 65px;
+    height: 40px;
+
+}
+.card_num{
+    margin-left: 20px;
+    margin-bottom: 10px;
+
+}
+/*body {
+  margin: 0;
+  padding: 0;
+  height: 100vw;
+  background: #f08080;
+}*/
+
+.threeD {
+  color: darkgrey;
+  white-space: nowrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  transition: 0.3s;
+  text-shadow: 1px 1px 0 grey, 1px 2px 0 grey, 1px 3px 0 grey, 1px 4px 0 grey,
+    1px 5px 0 grey, 1px 6px 0 grey, 1px 7px 0 grey, 1px 8px 0 grey,
+    5px 13px 15px black;
+}
+
+.threeD:hover {
+  transition: 0.3s;
+  transform: scale(1.1)translate(-50%, -50%);
+  text-shadow: 1px -1px 0 grey, 1px -2px 0 grey, 1px -3px 0 grey,
+    1px -4px 0 grey, 1px -5px 0 grey, 1px -6px 0 grey, 1px -7px 0 grey,
+    1px -8px 0 grey, 5px -13px 15px black, 5px -13px 25px #808080;
+}
+
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="/"></a>
+        
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul style="padding: 50px;" class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <!-- <li style="float: left;"><img src="images/logo1.png" width="100px" height="35px"></li> -->
+                        <li style="float: left;"><img src="/images/logo1.png" width="100px" height="35px"></li>
+                        <!--<li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/signin">Sign-in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/register" tabindex="-1" aria-disabled="true">Sign-up</a>
+                        </li>
+        
+                        <li style="float:left" class="nav-item">
+                            <a class="nav-link" href="/admin" tabindex="-1" aria-disabled="true">Page Management</a>
+                        </li>
+                        <li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-secondary log-out-btn">Log Out</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--container-->
+        </nav>
+        <% if (result.length >= 2) { %>
+            
+        <div class="container" >
+            <div class="row">
+                <div class="col-6 offset-3 login-container" style="background-color: rgb(139, 172, 171);">
+                <form method="POST" action="">
+                    <div class= "centered"> 
+                        <p style="font-size: 60px; font-family: 'Playfair Display';">Guest details</p>
+                            <label class="labels">Birthdate</label>
+                            <input type="date" name="birthday" style="font-size: x-large; display: block;" required>
+                            <br>
+                            <label class="labels">Passport ID</label>
+                            <input type="text" name="cardno" style="font-size: x-large; display: block;" required>
+                            <br>
+                            <label class="labels">Category</label>
+                            <select name="category" style="font-size: x-large; display: block;" required>
+                                <option value="adult">Adult</option>
+                                <option value="child">Child</option>
+                            </select>
+                            <br>
+                            <label class="labels">Email</label>
+                            <input type="email" name="email" style="font-size: x-large; display: block;" required>
+                            <br>
+                            <label class="labels">Passport expiration date</label>
+                            <input type="date" name="expiration" style="font-size: x-large; display: block;" required>
+                            <br>
+                            <label class="labels">Name</label>
+                            <input type="text" name="name" style="font-size: x-large; display: block;" required>
+                            <br>
+                            <label class="labels">Nationality</label>
+                            <input type="text" name="nationality" style="font-size: x-large; display: block;" required>
+                            <br>
+                            <label class="labels">Phone</label>
+                            <input type="text" name="phone" style="font-size: x-large; display: block;" required>
+                            <br>
+                            <label class="labels">Surname</label>
+                            <input type="text" name="surname" style="font-size: x-large; display: block;" required>
+                            <br>
+                            <label class="labels">Title</label>
+                            <select name="title" style="font-size: x-large; display: block;" required>
+                                <option value="mr">Mr.</option>
+                                <option value="ms">Ms.</option>
+                            </select>
+                            <br>
+                        </div>
+                
+                </div>
+                </div>
+                </div>
+                <div class="container mt-5 mb-5 d-flex justify-content-center">
+                    <div class="card p-5">
+                        <div>
+                            <p class="text">Please make the payment for booking.</p>
+                        </div>
+                        <div class="pricing p-3 rounded mt-4 d-flex justify-content-between">
+                            <div class="images d-flex flex-row align-items-center"> <img src="https://i.imgur.com/S17BrTx.png" class="rounded" width="60">
+                                <div class="d-flex flex-column ml-4"> <span class="business">Total price </span></div>
+                            </div>
+                            <!--pricing table-->
+                            <div class="d-flex flex-row align-items-center"> <sup class="dollar font-weight-bold"><%= result[0] %></sup> <span class="amount ml-1 mr-1"><%= result[1] %></span></div> <!-- /pricing table-->
+                        </div> 
+                        <span class="detail mt-5">Payment details</span>
+                        <div class="credit rounded mt-4 d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/qHX7vY1.png" class="rounded" width="70">
+                                <div class="d-flex flex-column ml-3"> <span class="business">Card Number</span><span> </span><input type="text" name="credit_no" placeholder="1234XXXXXXXX4567" class="card_num" required></div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="d-flex flex-column ml-3"> <span class="business">Exp. date</span><span> </span><input type="date" name="exp_date" placeholder="expiration date" class="exp" required></div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="d-flex flex-column ml-3"> <span class="business">CVC/CVV</span><span>   </span><input type="text" class="form-control cvv" placeholder="CVC" name="cvc" required></div>
+                            </div>
+                            <!-- <div class="d-flex flex-row align-items-center">
+                                <div class="d-flex flex-column ml-3"> <span class="business">Email</span><span>   </span><input type="text" class="form-control email" placeholder="Email" name="email"></div>
+                            </div> -->
+                        </div>
+                        <div class="mt-3"> <input type="submit" class="btn btn-primary btn-block payment-button" value="Proceed to payment"></div>
+                    </div>
+                </div>
+          </form>
+    <% } %>
+    <% if (result.length == 1) { %>
+        <div>
+            <p class="threeD"><%= result[0] %></p>
+            <a href="/">Go Back</a>
+        </div>
+    <% } %> 
+    </body>
+</html>

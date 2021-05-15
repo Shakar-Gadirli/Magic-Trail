@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <style>
+        </style>
+
+    </head>
+    <body >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="/"></a>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul style="padding: 50px;" class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <!-- <li style="float: left;"><img src="images/logo1.png" width="100px" height="35px"></li> -->
+                        <li style="float: left;"><img src="/images/logo1.png" width="100px" height="35px"></li>
+                        <!--<li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/signin">Sign-in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/register" tabindex="-1" aria-disabled="true">Sign-up</a>
+                        </li>
+
+                        <li style="float:left" class="nav-item">
+                            <a class="nav-link" href="/admin" tabindex="-1" aria-disabled="true">Page Management</a>
+                        </li>
+                        <li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-secondary log-out-btn">Log Out</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--container-->
+        </nav>
+        <h1 style="text-align: center;">Hotel is available</h1>
+
+              <section >
+          
+                <div class="product-card" style="background-image: url('https://i.pinimg.com/564x/cd/9c/1b/cd9c1be8362d8bcc82dfff3037da9336.jpg'); text-align: center;">
+                    <h2>Hotel</h2>
+                    <h3> Hotel Name: <%= result.hotel.name %></h3>
+                    <p>Rating: <%= result.hotel.rating %></p>
+                    <p>Street Name: <%= result.hotel.address.lines[0] %></p>
+                    <p>Postal Code: <%= result.hotel.address.postalCode %></p>
+                    <p>City Name: <%= result.hotel.address.cityName %></p>
+                    <br>
+                    <h5>Contact information</h5>
+                    <p>Phone: <%= result.hotel.contact.phone %></p>
+                    <p>Fax: <%= result.hotel.contact.fax %></p>
+                    <p>Email: <%= result.hotel.contact.email %></p>
+                    <br>
+
+                    <h5>Amenities</h5>
+                    <% result.hotel.amenities.forEach((elem)=>{ %>
+                        <p><%= elem %></p>
+                    <% }) %>
+
+                    <br>
+                    <h5>Offers</h5>
+                    
+                    <% result.offers.forEach((elem)=>{ %>
+                        <div class="offer">
+                        <p>Guests: <%= elem.guests.adults %></p>
+                        <p>Check in date: <%= elem.checkInDate %> </p>
+                        <p>Check in date: <%= elem.checkOutDate %> </p>
+                        <br>
+                        <h5>Room details</h5>
+                        <p>Room Type: <%= elem.room.type %></p>
+                        <p>Room Category: <%= elem.room.typeEstimated.category %></p>
+                        <p>Beds: <%= elem.room.typeEstimated.beds %></p>
+                        <p>Bed Type: <%= elem.room.typeEstimated.bedType %></p>
+                        <p>Room description: <%= elem.room.description.text %></p>
+                        <br>
+
+                        <h5>Price</h5> 
+                        <p>Total price: <%= elem.price.total %> <%= elem.price.currency %></p>
+                        
+                        <% if(elem.policies.guarantee){ %>
+                        <h5>Payment methods</h5>
+                        <% elem.policies.guarantee.acceptedPayments.methods.forEach((elem)=>{ %>
+                            <p><%= elem %></p>
+                        <% }) %>
+                        <% } %>
+
+                    <button onclick="location.href = '/book_hotel/payment/<%= result.hotel.hotelId %>/<%= elem.id %>/<%= elem.price.total %>/<%= elem.price.currency %>';" >Book</button>
+                    <% }) %>
+                </div>
+
+                </div>
+            </section>
+    </body>
+</html>

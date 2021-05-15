@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MagicTrail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="1050496349713-dr760uov26mvvar2kn7hvsj2pfefjm08.apps.googleusercontent.com">
+
+    <style>
+        .alert-box {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .warning {
+            color: #ff0606;
+            background-color: #fad8d8;
+            border-color: #faebcc;
+        }
+        .btn-google {
+            color: #545454;
+            background-color: #ffffff;
+            box-shadow: 0 1px 2px 1px #ddd
+        }
+
+        .or-container {
+            align-items: center;
+            color: #ccc;
+            display: flex;
+            margin: 25px 0
+        }
+
+        .line-separator {
+            background-color: #ccc;
+            flex-grow: 5;
+            height: 1px
+        }
+
+        .or-label {
+            flex-grow: 1;
+            margin: 0 15px;
+            text-align: center
+        }
+
+        .border-md {
+           border-width: 2px;
+        }
+
+        .btn-facebook {
+            background: #405D9D;
+            border: none;
+        }
+
+        .btn-facebook:hover, .btn-facebook:focus {
+            background: #314879;
+        }
+
+
+
+        body {
+            min-height: 100vh;
+        }
+
+        .form-control:not(select) {
+            padding: 1.5rem 0.5rem;
+        }
+
+        select.form-control {
+            height: 52px;
+            padding-left: 0.5rem;
+        }
+
+        .form-control::placeholder {
+            color: #ccc;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .form-control:focus {
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+
+<body class="register-body">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+        </button>
+                <a class="navbar-brand" href="/"></a>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul style="padding: 50px;" class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li style="float: left;"><img src="/images/logo1.png" width="100px" height="35px"></li>
+                        <!--<li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/signin">Sign-in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/register" tabindex="-1" aria-disabled="true">Sign-up</a>
+                        </li>
+
+                        <li style="float:left" class="nav-item">
+                            <a class="nav-link" href="/admin" tabindex="-1" aria-disabled="true">Page Management</a>
+                        </li>
+                        <li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    
+<div class="container">
+    <div class="row py-5 mt-4 align-items-center">
+        <!-- For Demo Purpose -->
+        <div class="col-md-6 pr-lg-5 mb-5 mb-md-0">
+            <img src="https://res.cloudinary.com/dbtpvgxts/image/upload/v1620308744/Flight_Booking-pana_2_qjvgo6.svg" alt="" class="img-fluid mb-3 d-none d-md-block">
+        </div>
+       
+        <!-- Registeration Form -->
+        <div class="col-md-4 col-lg-6 ml-auto">
+         
+            <% if(typeof alert != 'undefined') { %>
+                <% alert.forEach(function(error) { %>
+                    <div class="alert-box warning">
+                        <%= error.msg %>
+                    </div>
+                    <% }) %>
+                        <% } %>
+            <% if(typeof errors != 'undefined'){ %> <% errors.forEach(function(error) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <%= error.msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <% }); %> <% } %> <% if(success_msg != ''){ %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <%= success_msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <% } %> <% if(error_msg != ''){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error_msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <% } %> <% if(error != ''){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+            <form action="/auth/register" method="POST">
+                <div class="row">
+
+
+                    <!--  Name -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input type="name" id="name" name="name" class="form-control bg-white border-left-0 border-md" placeholder="Enter Name"
+                        value="<%= typeof name != 'undefined' ? name : '' %>" />
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input type="email" id="email" name="email" class="form-control bg-white border-left-0 border-md" placeholder="Enter Email"
+                        value="<%= typeof email != 'undefined' ? email : '' %>" />
+                    </div>
+
+                   
+                    <!-- Password -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-lock text-muted"></i>
+                            </span>
+                        </div>
+                        <input type="password" id="password" name="password" class="form-control bg-white border-left-0 border-md" placeholder="Enter Password"
+              value="<%= typeof password != 'undefined' ? password : '' %>" />
+                    </div>
+
+                    <!-- Password Confirmation -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-lock text-muted"></i>
+                            </span>
+                        </div>
+                        <input type="password" id="password2" name="password2" class="form-control bg-white border-left-0 border-md" placeholder="Confirm Password"
+              value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group col-lg-12 mx-auto mb-0">
+                        <button type="submit" class="btn btn-primary btn-block py-2">
+                            <span class="font-weight-bold">Create your account</span>
+                        </button>
+                    </div>
+
+                    <!-- Divider Text -->
+                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                        <div class="border-bottom w-100 ml-5"></div>
+                        <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                        <div class="border-bottom w-100 mr-5"></div>
+                    </div>
+
+                    <!-- Social Login -->
+                    <div class="form-group col-lg-12 mx-auto">
+                        <a class="btn  btn-primary btn-block py-2 btn-google " href="/auth/google"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Continue with Google</a>
+                        <a href="/auth/facebook" class="btn btn-primary btn-block py-2 btn-facebook">
+                            <i class="fa fa-facebook-f mr-2"></i>
+                            <span class="font-weight-bold">Continue with Facebook</span>
+                        </a>
+                    </div>
+
+                    <!-- Already Registered -->
+                    <div class="text-center w-100">
+                        <p class="text-muted font-weight-bold">Already Registered? <a href="/auth/signin" class="text-primary ml-2">Login</a></p>
+                        <p style="color:rgb(163, 10, 36);">
+                            <%=(typeof alertMsg!='undefined')? alertMsg:''%>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+      
+</body>
+
+</html>

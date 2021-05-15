@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Or Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+    <style>
+        body {
+            min-height: 100vh;
+        }
+
+        .form-control:not(select) {
+            padding: 1.5rem 0.5rem;
+        }
+
+        select.form-control {
+            height: 52px;
+            padding-left: 0.5rem;
+        }
+
+        .form-control::placeholder {
+            color: #ccc;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .form-control:focus {
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body class="login-body">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="/"></a>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul style="padding: 50px;" class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <!-- <li style="float: left;"><img src="images/logo1.png" width="100px" height="35px"></li> -->
+                        <li style="float: left;"><img src="/images/logo1.png" width="100px" height="35px"></li>
+                        <!--<li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/signin">Sign-in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/register" tabindex="-1" aria-disabled="true">Sign-up</a>
+                        </li>
+
+                        <li style="float:left" class="nav-item">
+                            <a class="nav-link" href="/admin" tabindex="-1" aria-disabled="true">Page Management</a>
+                        </li>
+                        <li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--container-->
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row py-5 mt-4 align-items-center">
+        <div class="col-md-7 pr-lg-5 mb-5 mb-md-0">
+            <img src="https://res.cloudinary.com/dbtpvgxts/image/upload/v1620311510/8355_j2soe0.jpg" alt="" class="img-fluid mb-3 d-none d-md-block">
+        </div>
+        <div class="col-md-3 col-lg-5 ml-auto">
+               <div class="text-center w-100">
+                <h2>
+                    Login to your account
+                </h2>
+                <br>
+                </div>
+                <% if(typeof errors != 'undefined'){ %> <% errors.forEach(function(error) { %>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <%= error.msg %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <% }); %> <% } %> <% if(success_msg != ''){ %>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <%= success_msg %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <% } %> <% if(error_msg != ''){ %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <%= error_msg %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <% } %> <% if(error != ''){ %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <%= error %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <% } %>
+                <form action="/auth/signin" method="POST">
+
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input type="email" id="email" name="email" class="form-control  bg-white border-left-0 border-md" placeholder="Enter Email" />
+                    </div>
+
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-lock text-muted"></i>
+                            </span>
+                        </div>
+                        <input type="password" id="password" name="password" class="form-control  bg-white border-left-0 border-md"
+                        placeholder="Enter Password" />
+                    </div>
+
+                    <div class="form-group col-lg-12 mx-auto mb-0">
+                        <button type="submit" class="btn btn-primary btn-block py-2">
+                            <span class="font-weight-bold">Login</span>
+                        </button>
+                    </div>
+                </form>
+                <div class="text-center w-100">
+                <p class="text-muted font-weight-bold">
+                    Do not have an account? <a href="/auth/register">Register</a>
+                </p>
+
+                <p class="text-muted font-weight-bold">
+                    Forgot Password? <a href="/auth/forgot">Reset</a>
+                </p>
+                </div>
+        </div>
+    </div>
+  </div>
+
+    </body>
+
+</html>

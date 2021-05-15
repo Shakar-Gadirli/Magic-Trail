@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Flights and Hotels</title>
+
+  <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+ 
+    body {
+        font-family: sans-serif;
+        margin: 0 auto;
+    }
+ 
+    header {
+    	text-align: center;
+    }
+ 
+    .product-cards {
+      margin-bottom: 30px;
+    }
+
+    nav {
+    	margin-top: 20px;
+    	background: black;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      justify-content: center;    
+    }
+ 
+    nav a {
+      color: white;
+      font-weight: bold;
+      display: block;
+      padding: 15px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+    	color: red;
+    }
+
+    .breadcrumb {
+      display: flex;
+      list-style: none;
+      background: lightgrey;
+    }
+ 
+    .breadcrumb li {
+      padding: 10px;
+    }
+ 
+    .breadcrumb li:after {
+      content: "/";
+      margin-left: 20px;
+    }
+ 
+    .breadcrumb li:last-child:after {
+      content: "";
+    }
+ 
+    .breadcrumb a {
+      color: black;
+      text-decoration: none;
+    }
+ 
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+    
+    .intro {
+      margin: 30px 0;
+      padding: 0 10px;
+    }
+ 
+    .intro h1 {
+      margin-bottom: 15px;
+    }
+ 
+    .intro p {
+      line-height: 1.5;
+    }
+
+    @keyframes productCards {
+	  from {
+	  	background-color: white;
+	  	color: black;
+	  	border-width: 1px;
+	  	padding: 15px;
+	  }
+	  to {
+	  	background-color: black;
+	  	color: white;
+	  	border-width: 5px;
+	  	padding: 11px;
+	  }
+	}
+ 
+    .product-card {
+      border: 1px solid black;
+      padding: 15px;
+      margin: 10px;
+    }
+
+    .product-card:hover {
+    	animation: productCards 2s;
+    	color: white;
+    	border: 5px solid red;
+    	background: black;
+    }
+ 
+    .product-card a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .product-card:hover a {
+    	color: white;
+    }
+ 
+    .product-card img {
+      width: 100%;
+    }
+ 
+    .product-card h2 {
+      margin: 30px 0 15px;
+    }
+ 
+    .product-card p {
+      line-height: 1.5;
+    }
+ 
+    .original-price {
+      color: grey;
+      text-transform: uppercase;
+    }
+ 
+    .current-price span {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+ 
+    .saving {
+      color: green;
+      font-weight: bold;
+    }
+    button{
+        padding: 14px;
+        margin-top: 20px;
+    }
+
+    @media (min-width: 768px) {
+    	header {
+    		align-items: center;
+        	display: flex;
+    	}
+    	nav {
+    		background: transparent;
+    		margin-top: 0;
+    		margin-left: 30px;
+    	}
+    	nav a {
+    		color: black;
+    		position: relative;
+      		top: 0;
+      		transition: top .5s, color .5s;
+    	}
+    	nav a:hover {
+    		top: -10px;
+    		text-decoration: none;
+    		color: red;
+    	}
+    	.intro {
+    		width: 50%;
+    	}
+    	.product-cards {
+      		display: grid;
+      		grid-template-columns: auto auto auto auto;
+      	}
+      	.product-card {
+      		display: inline-block;
+          background-image: url('https://i.pinimg.com/564x/6f/bf/7f/6fbf7fdfbe4c8b3bf2e811bc1928c211.jpg');
+          background-size: 100%;
+      	}
+    }
+
+    @media only print {
+    	nav {
+    		display: none;
+    	}
+    }
+  </style>
+</head>
+ 
+<body style="text-align: center;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/"></a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul style="padding: 50px;" class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <!-- <li style="float: left;"><img src="images/logo1.png" width="100px" height="35px"></li> -->
+                <li style="float: left;"><img src="/images/logo1.png" width="100px" height="35px"></li>
+                <!--<li style="float:left;" class="nav-item active">
+                    <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/signin">Sign-in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/register" tabindex="-1" aria-disabled="true">Sign-up</a>
+                </li>
+
+                <li style="float:left" class="nav-item">
+                    <a class="nav-link" href="/admin" tabindex="-1" aria-disabled="true">Page Management</a>
+                </li>
+                <li style="float:left;" class="nav-item active">
+                    <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary log-out-btn">Log Out</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--container-->
+</nav>
+    <% if (result.flight) { %>
+  <section class="intro">
+    <h1 style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-style: oblique; padding-left: 93%;">Flights</h1>
+  </section>
+  <section class="product-cards">
+    <% result.flight[0].forEach((obj)=>{ %>
+        <div class="product-card">
+            <h2>Flight</h2>
+            <% obj.route.forEach((route_obj)=>{ %>
+                <br>
+            <h3>Airline: <%= route_obj.airline %></h3>
+            <p>Source: <%= route_obj.cityFrom %></p>
+            <p>Destination: <%= route_obj.cityTo %></p>
+            <p>Departure time:<%= route_obj.local_departure %></p>
+            <p>Arrival time:<%= route_obj.local_arrival %></p>
+            <p>Flight Number: <%= route_obj.flight_no %></p> 
+            <% }) %>
+            <br><br>
+            <p>Number of passengers: <%= result.flight[1].seats.passengers %> passengers </p>
+            <p class="saving">Price: <%= obj.price %> AZN </p> 
+            <button onclick="location.href = '/book_flight/<%= obj.booking_token%>';">Details</button>
+
+             
+        </div>
+    <% }) %>
+  </section>
+  <% } %>
+
+  <% if (result.hotel.length > 0) { %>
+    <section class="intro">
+        <h1>Hotels</h1>
+    </section>
+    <% result['hotel'].forEach((box)=>{ %>
+        <div class="product-card">
+            <h2>Hotel</h2>
+            <h3> Hotel Name: <%= box.hotel.name %></h3>
+            <p>Rating: <%= box.hotel.rating %></p>
+            <p>Street Name: <%= box.hotel.address.lines %></p>
+            <p>City Name: <%= box.hotel.address.cityName %></p>
+            <p>Phone: <%= box.hotel.contact.phone %></p>
+            <p>Fax: <%= box.hotel.contact.fax %></p>
+            <p>Email: <%= box.hotel.contact.email %></p>
+            <br>
+            <h5>Room details</h5>
+            <p>Room Type: <%= box.offers[0].room.type %></p>
+            <p>Room Category: <%= box.offers[0].room.typeEstimated.category %></p>
+            <p>Beds: <%= box.offers[0].room.typeEstimated.beds %></p>
+            <p>Bed Type: <%= box.offers[0].room.typeEstimated.bedType %></p>
+            <p>Room description: <%= box.offers[0].room.description.text %></p>
+            <br>
+            <p>Guests: <%= box.offers[0].guests.adults %></p>
+            <p>Check in date: <%= box.offers[0].checkInDate%> </p>
+            <p>Check in date: <%= box.offers[0].checkOutDate %> </p>
+            <br>
+            <h5>Price</h5> 
+            <p>Total price: <%= box.offers[0].price.total %> <%= box.offers[0].price.currency %></p>
+            <button onclick="location.href = '/book_hotel/<%= box.hotel.hotelId %>';" >Details</button>
+        </div>
+        <% }) %>    
+    
+    <% } %>
+
+    <% if (result.hotel.length <1 && !result.flight) { %>
+        <p>No results found</p>
+        <p><a href="/">GO BACK</a></p>
+    <% } %>
+
+    <p><a href="/">GO BACK</a></p>
+
+</body>
+</html>

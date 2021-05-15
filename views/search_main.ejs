@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+                table{
+                    width: auto;  
+                    border-collapse: collapse;
+                }
+                th{
+                    color: blue;
+                    font-size: 15px;
+                }
+
+                td{
+                    color: black;
+                }
+                tr{
+
+                    margin-bottom: 30px;
+                    width: 100%;
+                }
+                #last_tr{
+                    margin-bottom: 50px;
+                    border-bottom: 5px solid red;
+                }
+               
+                th,td{
+                    margin-left: 20px;
+                    margin-right: 20px;
+                    padding:40px;
+                    font-size: 15px;
+                    text-align: left;
+                    border-bottom: 1px solid blue;
+                }
+                .flight{
+                    margin-bottom: 500px;
+                }
+                
+        </style>
+    </head>
+    <body>
+        <% if (result.flight) { %>
+        <div class="flight">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Airline name</th>
+                        <th>From city</th>
+                        <th>To city</th>
+                        <th>Local departure</th>
+                        <th>Local arrival</th>
+                        <th>Flight No.</th>
+                    </tr>
+            </thead>
+            <tbody style="text-align: center;">
+                <h1>Flights</h1>
+                    <% result.flight[0].forEach((obj)=>{ %>
+                        <% obj.route.forEach((route_obj)=>{ %>
+                            <tr>
+                                <td><%= route_obj.airline %></td>
+                                <td><%= route_obj.cityFrom %></td>
+                                <td><%= route_obj.cityTo %></td>
+                                <td><%= route_obj.local_departure %></td>
+                                <td><%= route_obj.local_arrival %></td>
+                                <td><%= route_obj.flight_no %></td>
+                            </tr>
+                        <% }) %>
+                        <tr id="last_tr">
+                            <td><%= obj.price %> AZN </td>
+                            <td><%= result.flight[1].seats.passengers %> passengers </td>
+                        </tr>
+                        <br><br>
+                    <% }) %>
+              
+            </tbody>
+            </table>
+        </div>
+        <% } %>
+        <% if (result.hotel) { %>
+            <div>
+            <table>
+                <thead>
+            </thead>
+            <tbody>
+                <h1> Hotels </h1>
+                    <% result['hotel'].forEach((box)=>{ %>
+                        <tr>
+                            <td> Hotel Name: <%= box.hotel.name %></td>
+                            <td> Rating: <%= box.hotel.rating %></td>
+                            <td> Street Name: <%= box.hotel.address.lines %></td>
+                            <td> City Name: <%= box.hotel.address.cityName %></td>
+                            <td> Phone: <%= box.hotel.contact.phone %></td>
+                            <td> Fax: <%= box.hotel.contact.fax %></td>
+                            <td> Email: <%= box.hotel.contact.email %></td>
+                        </tr>
+                        <tr>
+                            <td>Room Type: <%= box.offers[0].room.type %></td>
+                            <td>Room Category: <%= box.offers[0].room.typeEstimated.category %></td>
+                            <td>Beds: <%= box.offers[0].room.typeEstimated.beds %></td>
+                            <td>Bed Type: <%= box.offers[0].room.typeEstimated.bedType %></td>
+                        </tr>
+                        <tr>
+                            <td>Room description: <%= box.offers[0].room.description.text %></td>
+                        </tr>
+                        <tr>
+                            <td>Guests: <%= box.offers[0].guests.adults %></td>
+                            <td>Policies: <p>Deadline: <%= box.offers[0].policies.holdTime.deadline %> Cancellation: <%= box.offers[0].policies.cancellation.description.text %> </p></td>
+                        </tr>
+                        <tr style="border-bottom: 5px solid red;">
+                            <td>Base: <%= box.offers[0].price.variations.average.base %> <%= box.offers[0].price.currency %></td>
+                            <td>Total price: <%= box.offers[0].price.total %> <%= box.offers[0].price.currency %></td>
+                        </tr>
+                
+                    <% }) %>    
+            </tbody>
+            </table>
+        </div>
+        <% } %>
+   
+    </body>
+</html>
+
+
+
+
+

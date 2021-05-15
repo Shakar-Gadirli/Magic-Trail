@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <style>
+            body{
+                background-image: url('https://media4.giphy.com/media/PkLrYFJT9KVwkkvpjO/giphy.gif');
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="/"></a>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul style="padding: 50px;" class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <!-- <li style="float: left;"><img src="images/logo1.png" width="100px" height="35px"></li> -->
+                        <li style="float: left;"><img src="/images/logo1.png" width="100px" height="35px"></li>
+                        <!--<li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/signin">Sign-in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/register" tabindex="-1" aria-disabled="true">Sign-up</a>
+                        </li>
+
+                        <li style="float:left" class="nav-item">
+                            <a class="nav-link" href="/admin" tabindex="-1" aria-disabled="true">Page Management</a>
+                        </li>
+                        <li style="float:left;" class="nav-item active">
+                            <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-secondary log-out-btn">Log Out</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--container-->
+        </nav>
+        <% if (result.length == 0) { %>
+            <div class="container" style="text-align: center">
+                <div class="row">
+                    <div class="col-6 offset-3 login-container">
+                        <form action="" method="POST" >
+                            <label style="font-style:italic; font-size: x-large;">Number of bags</label>
+                            <br>
+                            <input type="number" id="bags" min="1" name="bags">
+                            <br><br>
+                            <label style="font-style:italic; font-size: x-large;">Number of passengers</label>
+                            <br>
+                            <input type="number" id="passengers" min="1" name="passengers">
+                            <br><br>
+                            <label style="font-style:italic; font-size: x-large;">Currency</label>
+                            <br>
+                            <select name="currency" aria-setsize="10">
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="AZN">AZN</option>
+                            </select>
+                            <br><br>
+                            <input type="submit" value="SUBMIT">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        
+
+        <% if (result.length > 0) { %>
+                <h1>Flight is available</h1>
+
+              <section style=" font-size: large; ">
+                <% result[0].flights.forEach((obj)=>{ %>
+                    <div>
+                        <h3>Airline: <%= obj.airline.Name %></h3>
+                        <p>Source: <%= obj.src_station %> station, <%= obj.src_name %>, <%= obj.src_country %></p>
+                        <p>Destination: <%= obj.dst_station %> station, <%= obj.dst_name %>, <%= obj.dst_country %></p>
+                        <p>Departure time (UTC): <%= obj.utc_departure %></p>
+                        <p>Arrival time: <%= obj.utc_arrival %></p>
+                    </div>  
+                <% }) %>
+
+                <br>
+                <h3>Overall results</h3>
+                <p>Adults price: <%= result[0].adults_price %> <%= result[0].currency %></p>
+                <p>Children price: <%= result[0].children_price %> <%= result[0].currency %></p>
+                <p>Total tickets price: <%= result[0].tickets_price %> <%= result[0].currency %></p>
+                <br>
+                <h4>Bags fees</h4>
+                <p>Bags fee (base) <%= result[0].bags_price_split[1].base %> <%= result[0].bags_price_split[1].currency %></p>
+                <p>Bags fee (service) <%= result[0].bags_price_split[1].service %> <%= result[0].bags_price_split[1].currency %></p>
+                <p>Total bags price: <%= result[0].bags_fee %> <%= result[0].bags_price_split[1].currency %></p>
+                <br>
+                <p style="font-weight: bold;">Total: <%= result[0].total %> <%= result[0].currency %> </p>
+                <p>Conversion: <%= result[0].conversion.amount %> <%= result[0].conversion.currency %> </p>
+                <p>Airline:<%= result[0].flights[0].airline.Name %> </p>
+                <button onclick="location.href = '/save_booking/<%= result[0].booking_token %>/<%= result[0].session_id%>/<%= result[0].pnum %>/<%= result[0].conversion.currency %>/<%= result[0].conversion.amount %>'">Book</button>
+            </section>
+        <% } %>
+        
+    </body>
+</html>

@@ -1,0 +1,4 @@
+# .gitignore node modules.
+node_modules/
+ans.json
+notes_shakar.txt
