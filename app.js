@@ -359,23 +359,24 @@ app.post('/search', function (req, suc) {
       let lon = success.longitude;
       let lat = success.latitude;
 
-      // geocoder.reverse({ lat: lat, lon: lon }, function (err, res) {
-      var axios = require("axios").default;
+      geocoder.reverse({ lat: lat, lon: lon }, function (err, res) {
+      // var axios = require("axios").default;
 
-        var options = {
-        method: 'GET',
-        url: 'https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/',
-        headers: {
-        'x-rapidapi-key': 'fa887ab76amshabe911785ae3311p10f381jsn6092aa6659b2',
-        'x-rapidapi-host': 'ip-geolocation-ipwhois-io.p.rapidapi.com'
-        }
-      };
+      //   var options = {
+      //   method: 'GET',
+      //   url: 'https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/',
+      //   headers: {
+      //   'x-rapidapi-key': 'fa887ab76amshabe911785ae3311p10f381jsn6092aa6659b2',
+      //   'x-rapidapi-host': 'ip-geolocation-ipwhois-io.p.rapidapi.com'
+      //   }
+      // };
 
-    axios.request(options).then(function (response) {
-	  console.log(response.data);
+    // axios.request(options).then(function (response) {
+	  // console.log(response.data);
          
        // console.log(res);
-        var fly_from = response.data.country_code.toUpperCase();
+        // var fly_from = response.data.country_code.toUpperCase();
+        var fly_from = res[0].countryCode.toUpperCase();
         console.log("FLY FROM")
         console.log(fly_from)
         let fly_to;
@@ -538,9 +539,9 @@ app.post('/search', function (req, suc) {
     })
 
 
-    })
-    .catch((data, status) => {
-      console.log('Request failed');
+    // })
+    // .catch((data, status) => {
+    //   console.log('Request failed');
      });
     
     })
