@@ -2,6 +2,8 @@
 
 "Magic Trail" is a travel platform that gives a great opportunity to travel lovers with easy process of booking and exploring tours. It is clear that instead of searching many websites and reading thousands of sentences, people would benefit greatly from using only one website and finding all the details there. This website can offer visitors not only tour packages, but also the ability to choose appropriate flights and hotels based on their travel goals, personal budget, and preferences. Below you can find steps for executing the source code:
 
+Deployed version of the website can be found [here](https://magic-travel.glitch.me/).
+
 ## Requirements
 ```
 1. Node.js
