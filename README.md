@@ -42,3 +42,24 @@ node app.js
 
 ### Index page
 ![Index](https://i.imgur.com/jNQ2DVY.jpg)
+
+
+### Sign in page
+![Sign in](https://i.imgur.com/G7FRnvw.png)
+
+
+### Sign up page
+![Sign up](https://i.imgur.com/oWukGzm.png)
+
+### Page management page
+![Page management](https://i.imgur.com/pnxlHJZ.png)
+
+
+### Flights and Hotels search result
+![Page management](https://i.imgur.com/fUY3NkB.png)
+
+
+### Hotel booking page
+![Page management](https://i.imgur.com/o7O6ax7.png)
+
+
