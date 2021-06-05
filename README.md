@@ -36,3 +36,9 @@ Start the server by typing the next command in the terminal.
 ```bash
 node app.js
 ```
+
+
+## GUI of the application
+
+### Index page
+![Index](https://imgur.com/jNQ2DVY)
