@@ -41,4 +41,4 @@ node app.js
 ## GUI of the application
 
 ### Index page
-![Index](https://imgur.com/a/2XyZo0S)
+![Index](https://i.imgur.com/jNQ2DVY.jpg)
